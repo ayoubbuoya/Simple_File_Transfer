@@ -1,0 +1,35 @@
+#Importing
+import socket
+import os
+#Function Called To Send File
+def SendFile() :
+    FilePath=input("Enter File Path ===> ")
+    FileName=input("Enter File Name ===> ")
+    os.chdir(FilePath)
+    File=open(Filename,"rb")
+    File_Data=File.read()
+    conn.send(File_Data)
+#Create Socket Server 
+Server=socket.socket()
+Server_Ip=socket.gethostbyname(socket.gethostname())
+print("-"*84)
+print("")
+Server_Port=int(input("Enter Port Number :"))
+print("")
+print("-"*84)
+Server.bind((Server_Ip,Server_Port))
+print("")
+print("  Server Created Successfully @{}".format(Server_Ip))
+print("")
+print("-"*84)
+Server.listen(1)
+print("")
+print("   Waiting For Connection... @Port {}".format(Server_Port))
+print("")
+print("-"*84)
+print("")
+conn,addr =Server.accept()
+print("{} ,Connect To Your Server.".format(addr))
+print("-"*84)
+print("")
+SendFile()
